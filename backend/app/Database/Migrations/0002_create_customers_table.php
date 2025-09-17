@@ -1,0 +1,14 @@
+<?php
+
+$pdo->exec("
+    CREATE TABLE IF NOT EXISTS customers (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        name VARCHAR(255) NOT NULL,
+        date_of_birth DATE NOT NULL,
+        cpf VARCHAR(11) NOT NULL UNIQUE,
+        rg VARCHAR(9) NOT NULL UNIQUE,
+        phone VARCHAR(13) NOT NULL,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    );
+");
