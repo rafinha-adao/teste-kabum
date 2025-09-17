@@ -1,0 +1,62 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Node / Vite
+node_modules
+dist
+dist-ssr
+.cache
+.vite
+*.local
+
+# IDEs / Editor
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# PHP / Composer
+vendor
+composer.lock
+
+# Environment
+.env
+.env.*.local
+
+# Build / cache
+/build
+/tmp
+/cache
+/public/build
+/public/hot
+
+# React / Vite
+*.tsbuildinfo
+
+# Docker
+docker-compose.override.yml
+docker-compose.override.*.yml
+Dockerfile.dev
+.docker/
+tmp/
+*.env.docker
+
+# Outros
+coverage
+*.log
+
+notes.txt
