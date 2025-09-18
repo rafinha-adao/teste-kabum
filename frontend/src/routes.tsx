@@ -1,23 +1,80 @@
-import type { RouteObject } from "react-router-dom";
-import Dashboard from "./pages/dashboard/Dashboard";
+import { Navigate, type RouteObject } from "react-router-dom";
 import CustomerCreate from "./pages/customers/CustomerCreate";
 import CustomerEdit from "./pages/customers/CustomerEdit";
 import CustomersList from "./pages/customers/CustomersList";
 import Login from "./pages/login/Login";
 import NotFound from "./pages/NotFound";
+import { PrivateRoute } from "./components/PrivateRoute";
+import { PublicRoute } from "./components/PublicRoute";
 
 export const routes: RouteObject[] = [
-    { path: "/", element: <Dashboard /> },
+    {
+        path: "/login",
+        element: (
+            <PublicRoute>
+                <Login />
+            </PublicRoute>
+        )
+    },
+    {
+        path: "/",
+        element: (
+            <PrivateRoute>
+                <Navigate to="/customers" replace />
+            </PrivateRoute>
+        )
+    },
+    {
+        path: "/users",
+        element: (
+            <PrivateRoute>
+                <CustomersList />
+            </PrivateRoute>
+        )
+    },
+    {
+        path: "/users/create",
+        element: (
+            <PrivateRoute>
+                <CustomerCreate />
+            </PrivateRoute>
 
-    { path: "/login", element: <Login /> },
-
-    { path: "/users", element: <CustomersList /> },
-    { path: "/users/create", element: <CustomerCreate /> },
-    { path: "/users/:id/edit", element: <CustomerEdit /> },
-
-    { path: "/customers", element: <CustomersList /> },
-    { path: "/customers/create", element: <CustomerCreate /> },
-    { path: "/customers/:id/edit", element: <CustomerEdit /> },
-
-    { path: "*", element: <NotFound /> }
+        )
+    },
+    {
+        path: "/users/:id/edit",
+        element: (
+            <PrivateRoute>
+                <CustomerEdit />
+            </PrivateRoute>
+        )
+    },
+    {
+        path: "/customers",
+        element: (
+            <PrivateRoute>
+                <CustomersList />
+            </PrivateRoute>
+        )
+    },
+    {
+        path: "/customers/create",
+        element: (
+            <PrivateRoute>
+                <CustomerCreate />
+            </PrivateRoute>
+        )
+    },
+    {
+        path: "/customers/:id/edit",
+        element: (
+            <PrivateRoute>
+                <CustomerEdit />
+            </PrivateRoute>
+        )
+    },
+    {
+        path: "*",
+        element: <NotFound />
+    }
 ]; 

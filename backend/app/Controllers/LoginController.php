@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\UserModel;
 use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
 use PDO;
 
 class LoginController
@@ -15,15 +16,26 @@ class LoginController
         $this->user_model = new UserModel($pdo);
     }
 
+    public function index()
+    {
+        return true;
+    }
+
     public function store()
     {
-        $user = $this->user_model->findByField('email', $_POST['email']);
+        $data = json_decode(file_get_contents('php://input'), true);
 
-        if (!$user || !password_verify($_POST['password'], $user['password'])) {
+        if (!$data) {
+            exit;
+        }
+
+        $user = $this->user_model->findByField('email', $data['email']);
+
+        if (!$user || !password_verify($data['password'], $user['password'])) {
             http_response_code(401);
             echo json_encode(['error' => 'Invalid credentials.']);
 
-            return;
+            exit;
         }
 
         $now     = time();

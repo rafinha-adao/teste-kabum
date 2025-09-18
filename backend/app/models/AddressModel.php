@@ -46,17 +46,16 @@ class AddressModel
 
     public function update($id, $address)
     {
-        $stmt = $this->pdo->prepare("UPDATE addresses SET customer_id = :customer_id, street = :street, number = :number, district = :district, city = :city, state = :state, zip_code = :zip_code WHERE id = :id");
+        $stmt = $this->pdo->prepare("UPDATE addresses SET street = :street, number = :number, district = :district, city = :city, state = :state, zip_code = :zip_code WHERE id = :id");
 
         return $stmt->execute([
-            ':customer_id' => $address['customer_id'],
-            ':street'      => $address['street'],
-            ':number'      => $address['number'],
-            ':district'    => $address['district'],
-            ':city'        => $address['city'],
-            ':state'       => $address['state'],
-            ':zip_code'    => $address['zip_code'],
-            ':id'          => $id
+            ':street'   => $address['street'],
+            ':number'   => $address['number'],
+            ':district' => $address['district'],
+            ':city'     => $address['city'],
+            ':state'    => $address['state'],
+            ':zip_code' => $address['zip_code'],
+            ':id'       => $id
         ]);
     }
 

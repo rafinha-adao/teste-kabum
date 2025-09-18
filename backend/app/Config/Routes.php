@@ -23,6 +23,7 @@ function add_route($method, $path, $controller, $action, $middleware = null)
     ];
 }
 
+add_route('GET', 'me', LoginController::class, 'index', AuthMiddleware::class);
 add_route('POST', 'login', LoginController::class, 'store');
 add_route('DELETE', 'logout', LoginController::class, 'destroy', AuthMiddleware::class);
 
