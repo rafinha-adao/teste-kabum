@@ -1,4 +1,4 @@
-# teste-kabum
+# Portal Administrativo
 
 Projeto full-stack com **PHP puro (API com JWT)** no backend e **React + Vite** no frontend, usando **Docker**.
 
@@ -10,7 +10,7 @@ Projeto full-stack com **PHP puro (API com JWT)** no backend e **React + Vite** 
   - PHP puro, sem frameworks  
   - Autenticação via **JWT** (JSON Web Token)  
   - Estrutura modular com Controllers e Database  
-  - Scripts para migração e seed de banco (`migrate.php` e `Seeder.php`)  
+  - Scripts para migração e seed de banco (`Migrate.php` e `Seeder.php`)  
 
 - **Frontend**:  
   - React + Vite para desenvolvimento rápido e moderno  
@@ -109,4 +109,3 @@ docker-compose logs -f
 docker-compose up --build -d
 ```
 
----

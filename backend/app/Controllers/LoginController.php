@@ -21,13 +21,9 @@ class LoginController
         return true;
     }
 
-    public function store()
+    public function store($data = null)
     {
-        $data = json_decode(file_get_contents('php://input'), true);
-
-        if (!$data) {
-            exit;
-        }
+        $data = $data ?? json_decode(file_get_contents('php://input'), true);
 
         $user = $this->user_model->findByField('email', $data['email']);
 
@@ -35,7 +31,7 @@ class LoginController
             http_response_code(401);
             echo json_encode(['error' => 'Invalid credentials.']);
 
-            exit;
+            return;
         }
 
         $now     = time();

@@ -55,8 +55,9 @@ Dockerfile.dev
 tmp/
 *.env.docker
 
+# Test
+.phpunit.result.cache
+
 # Outros
 coverage
 *.log
-
-notes.txt
